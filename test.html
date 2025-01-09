@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #3a3a3a, #ff7600);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 1.2rem;
+        }
+        .input-container {
+            position: relative;
+            display: inline-block;
+        }
+        input[type="date"] {
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            outline: none;
+            width: 250px;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        input[type="date"]:focus {
+            box-shadow: 0 0 10px rgba(255, 118, 0, 0.8);
+        }
+        button {
+            padding: 15px 25px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background-color: #ff7600;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #e85d04;
+            transform: scale(1.05);
+        }
+        .countdown-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .countdown {
+            font-size: 2rem;
+            margin-top: 10px;
+        }
+        .facts-container {
+            margin-top: 20px;
+        }
+        .fact {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Countdown to Your Birthday</h1>
+    <label for="dob">Enter your date of birth:</label>
+    <div class="input-container">
+        <input type="date" id="dob" name="dob" onclick="this.showPicker()">
+    </div>
+    <button onclick="fetchFacts()">Show Facts</button>
+    <div id="facts-container" class="facts-container"></div>
+    <script>
+        async function fetchFacts() {
+            const dobInput = document.getElementById('dob').value;
+            if (!dobInput) {
+                alert('Please enter your date of birth.');
+                return;
+            }
+            const dob = new Date(dobInput);
+            const facts = await fetchFactsFromAPI(dob);
+            displayFacts(facts);
+        }
+
+        async function fetchFactsFromAPI(date) {
+            const facts = [];
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const apiUrl = `https://byabbe.se/on-this-day/${month}/${day}/events.json`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                data.events.forEach(event => {
+                    facts.push(`${event.year}: ${event.description}`);
+                });
+            } catch (error) {
+                console.error('Error fetching facts:', error);
+            }
+            return facts;
+        }
+
+        function displayFacts(facts) {
+            const factsContainer = document.getElementById('facts-container');
+            factsContainer.innerHTML = '';
+            facts.forEach((fact, index) => {
+                setTimeout(() => {
+                    const p = document.createElement('p');
+                    p.classList.add('fact');
+                    p.innerText = fact;
+                    factsContainer.appendChild(p);
+                }, index * 500); // Delay each fact appearance
+            });
+        }
+    </script>
+</body>
+</html>

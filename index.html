@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chains Price List | REB Designs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #eaeaea;
+        }
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #444;
+        }
+        header h1 {
+            font-size: 3rem;
+            font-family: 'Impact', sans-serif;
+            margin: 0;
+        }
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.2rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .product {
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .product a {
+            text-decoration: none;
+            color: #007acc; /* Professional Blue */
+            font-size: 1rem;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .product a:hover {
+            color: #005f99; /* Slightly darker shade of blue */
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+
+        .left-bar {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #1a1a1a; /* Match background color */
+        }
+
+        .logo-container {
+            padding: 10px;
+        }
+
+        .logo {
+            width: 50px; /* Adjust the width as needed */
+            height: auto;
+        }
+
+        .middle-x {
+            font-size: 1rem; /* Adjust the font size as needed */
+            font-weight: bold;
+            color: white;
+            margin-left: 10px;
+        }
+        @keyframes blink {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .loading-dots {
+            display: inline-block;
+            font-size: 2rem;
+            margin-top: 20px;
+        }
+
+        .dot {
+            animation: blink 1.4s infinite both;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .center-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 40px); /* Adjusted to center the text properly */
+        }
+
+        footer {
+          background-color: #000;
+          color: #fff;
+           text-align: center;
+          padding: 10px;
+         border-top: 2px solid #444;
+         }       
+
+        footer a {
+           color: #007acc; /* Professional Blue */
+           text-decoration: none;
+       }
+
+        footer a:hover {
+          color: #005f99; /* Slightly darker shade of blue */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="left-bar">
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Logo 1" class="logo">
+        </div>
+        <div class="middle-x">
+            X
+        </div>
+        <div class="logo-container">
+            <img src="img/logo2.png" alt="Logo 2" class="logo">
+        </div>
+    </div>
+    <header>
+        <h1>Marios Chains</h1>
+        <p>View our products!</p>
+    </header>
+    <div class="container">
+        <div class="product">
+            <span>Ballers Chain</span>
+            <a href="ballers.html">View Details</a>
+        </div>
+        <div class="center-text">
+            <h1>MORE PRODUCTS COMING SOON <span class="loading-dots"><span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></span></h1>
+        </div>
+    </div>
+    <footer>
+     <a href="tos.html">Our tos</a>
+    </footer>
+</body>
+</html>
